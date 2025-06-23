@@ -6,4 +6,6 @@
   - 2006년도 데이터만 있으므로, 2006년으로 조회해야 함
   - http://localhost:8080/actor/get?releaseYear=2006
   - Get 요청 해야 함.
+  - scoula 계정에 sakila DB 권한이 있어야 함.
+  - https://dev.mysql.com/doc/index-other.html
   
