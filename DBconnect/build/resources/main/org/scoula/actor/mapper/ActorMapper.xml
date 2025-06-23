@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- my batis 매퍼 스캔 -->
+<!--<mybatis:scan base-package="org.scoula.actor.mapper"/>-->
+<mapper namespace="org.scoula.Actor.mapper.ActorMapper">
+
+
+    <select id="getActorList" resultType="org.scoula.Actor.domain.ActorVO">
+        select f.title                                as movieTitle,
+               concat(a.first_name, ' ', a.last_name) as actorName,
+               f.release_year,
+--                a.first_name                           as actorFirstName,
+--                a.last_name                            as actorLastName,
+               f.film_id                              as movidId,
+               a.actor_id                             as actorId
+        from film f
+                 inner join film_actor fa on f.film_id = fa.film_id
+                 inner join actor a on fa.actor_id = a.actor_id
+        where f.release_year = #{releaseYear}
+        order by f.title, a.last_name;
+    </select>
+<!--    <resultMap id="ActorResultMap" type="org.scoula.Actor.dto.ActorDTO">-->
+<!--        <result property="releaseYear" column="release_year"/>-->
+<!--        <result property="movieTitle" column="movieTitle"/>-->
+<!--        <result property="actorName" column="actorName"/>-->
+<!--    </resultMap>-->
+
+
+</mapper>
